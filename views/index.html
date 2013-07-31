@@ -1,4 +1,31 @@
-<h1> Proteome Motif Finder </h1>
-{% for i in Organisms %}
-  <br>{{i}}
-{% endfor %}
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+    </head>
+    <body>
+        <h1> Proteome Motif Finder </h1>
+        <input type="text" ng-model="regEx" 
+        placeholder="Enter a pattern (Perl Regular Expression)">
+        <div ng-controller="orgDisplay">
+            <li ng-repeat="org in orgs|filter:regexFilter">{{ "{{org}" }}}</li>
+        </div>
+        {{ "{{regEx}" }}}
+        <script>
+            function orgDisplay($scope){
+                $scope.orgz = ["a","b","c"];
+                $scope.orgs = [
+                {% for i in Organisms %}
+                "{{i}}",
+                {% endfor %}
+                ];
+                $scope.regexFilter = function(input){
+                    var patt=new RegExp($scope.regEx,"i");
+                        return patt.test(input);
+                };
+            };
+        </script>
+    </body>
+</html>
+
+

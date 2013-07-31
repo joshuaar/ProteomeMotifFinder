@@ -1,13 +1,7 @@
-spawn = require('child_process').spawn;
+fs = require('fs')
 exports.index = function(req,res){
-	console.log("Getting Bacteria")
-	var ps = spawn('bash',['shell/listBact.sh'])
-	var orgs = []
-	ps.stdout.on('data',function(data){
-		console.log("Got Bacteria")
-		orgs=orgs.concat(data.toString().split("\n"))
-	})
-	ps.on('close',function(code){
-		res.render("index",{Organisms:orgs})
-})
+	console.log("Getting Organism List")
+    fs.readFile("ncbi_cache/bactAndVirList.json","utf-8",function(er,contents){
+            res.render("index",{Organisms:JSON.parse(contents)})
+            })
 }
