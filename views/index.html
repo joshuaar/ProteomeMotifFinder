@@ -10,6 +10,7 @@
         placeholder="Enter a pattern (Perl Regular Expression)">
         <div ng-controller="orgDisplay">
             <a href ng-click="clear()">Clear</a>
+            <a href ng-click="postOrgs()">Submit</a>
             <li ng-repeat="i in added">
             <a href ng-click="rmOrg(i)">
                 {{ "{{i}"}}}
@@ -37,12 +38,30 @@
                     }
                     };
                 $scope.addOrg=function(orgName){
-                    $scope.added.push(orgName)
+                    $scope.added.push(orgName);
                 };
                 $scope.rmOrg=function(orgIndex){
-                    $scope.added.pop(orgIndex)
+                    $scope.added.pop(orgIndex);
                 };
                 $scope.clear=function(){$scope.added=[]}
+                $scope.post_to_url=function(path, params, method){
+                    method = method || "post";
+                    var form = document.createElement("form");
+                    form.setAttribute("method",method);
+                    form.setAttribute("action",path);
+                    for(var i=0; i<params.length; i++){
+                        var hiddenField = document.createElement("input");
+                        hiddenField.setAttribute("type","text");
+                        hiddenField.setAttribute("name",""+i);
+                        hiddenField.setAttribute("value",params[i]);
+                        form.appendChild(hiddenField);
+                    };
+                    document.body.appendChild(form);
+                    form.submit();
+                };
+                $scope.postOrgs=function(){
+                    $scope.post_to_url("orgs",$scope.added);
+                };
             };
         </script>
     </body>
