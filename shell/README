@@ -1,1 +1,13 @@
-The shell scipts in this folder interact with NCBI site, grab fasta files, and format them
+The shell scipts in this folder interact with NCBI site, grab fasta files, and 
+format them
+
+Most of these are not in use because I decided it was too complicated to keep
+talking to the NCBI FTP site. I instead decided to keep a local copy of the
+files I need and use these scripts to access those.
+
+Most notably listJSON.sh lists out all the bacteria and viruses and puts the list
+in ncbi_cache
+
+Also grabFasta.py goes to ncbi_cache/OrgFastas and grabs the appropriate folder 
+given in its only argument. It then formats all the fasta files as JSON and 
+prints it to stdout, to be read by node.
