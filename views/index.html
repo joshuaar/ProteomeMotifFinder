@@ -5,10 +5,20 @@
     </head>
     <body>
         <h1> Proteome Motif Finder </h1>
+        
         <input type="text" ng-model="regEx" 
         placeholder="Enter a pattern (Perl Regular Expression)">
         <div ng-controller="orgDisplay">
-            <li ng-repeat="org in orgs|filter:regexFilter">{{ "{{org}" }}}</li>
+            <a href ng-click="clear()">Clear</a>
+            <li ng-repeat="i in added">
+            <a href ng-click="rmOrg(i)">
+                {{ "{{i}"}}}
+            </a>
+            </li> 
+            <hr>
+            <li ng-repeat="org in orgs|filter:regexFilter">
+            <a href ng-click="addOrg(org)">{{ "{{org}" }}}</a>
+            </li>
         </div>
         {{ "{{regEx}" }}}
         <script>
@@ -19,10 +29,20 @@
                 "{{i}}",
                 {% endfor %}
                 ];
+                $scope.added = ["1","two"]
                 $scope.regexFilter = function(input){
                     var patt=new RegExp($scope.regEx,"i");
+                    if($scope.added.indexOf(input)==-1){
                         return patt.test(input);
+                    }
+                    };
+                $scope.addOrg=function(orgName){
+                    $scope.added.push(orgName)
                 };
+                $scope.rmOrg=function(orgIndex){
+                    $scope.added.pop(orgIndex)
+                };
+                $scope.clear=function(){$scope.added=[]}
             };
         </script>
     </body>
