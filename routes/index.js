@@ -39,6 +39,7 @@ exports.orgs = function(req,res){
                 nParsed += 1
                 console.log(orgList[i])
                 if(nParsed == orgList.length){
+                    console.log("Sending")
                     res.send(parsedOutput)
                 }
                 })
