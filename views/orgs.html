@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+        <script type="text/javascript">
+            var myApp = angular.module('myApp', [], function ($interpolateProvider) {
+                    $interpolateProvider.startSymbol('[[');
+                     $interpolateProvider.endSymbol(']]');
+                     });
+        //This script is for displaying the filtered protein data
+            myApp.controller('proteinDisplay',function($scope,$http,$timeout){
+                {% autoescape false %}
+                $scope.proteins={{proteins|json_encode}}
+                {% endautoescape %}
+                $scope.someText = ["abc","cde","efg"]
+                $scope.regExFilter=function(protein){
+                    var patt=new RegExp($scope.filterText,"i");
+                    return patt.test(protein.seq);
+                }
+
+                $scope.filterText = '';
+
+                var tempFilterText = '',
+                    filterTextTimeout;
+
+                $scope.$watch('regEx',function(val){
+                    if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
+                    //window.alert("HIO")
+                    tempFilterText = val;
+                    filterTextTimeout = $timeout(function(){
+                        $scope.filterText = tempFilterText;
+                        //window.alert("HEU")
+                        },400)
+                    })
+
+            });
+        </script>
+        <script>
+            angular.module('ng').filter('maxLines',function(){
+                return function(input){
+                    return input
+                }
+            })
+        </script>
+    </head>
+    <body>
+        <h1> Proteome Motif Finder </h1>
+        <div ng-controller="proteinDisplay"> 
+        <input type="text" ng-model="regEx" 
+        placeholder="Enter a pattern (Perl Regular Expression)">
+        <li ng-repeat="i in proteins|filter:regExFilter">
+        [[i.header]]<br>
+        </li>
+    </div>
+
+    </body>
+</html>
+
+

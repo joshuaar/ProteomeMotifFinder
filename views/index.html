@@ -30,7 +30,7 @@
                 "{{i}}",
                 {% endfor %}
                 ];
-                $scope.added = ["1","two"]
+                $scope.added = []
                 $scope.regexFilter = function(input){
                     var patt=new RegExp($scope.regEx,"i");
                     if($scope.added.indexOf(input)==-1){

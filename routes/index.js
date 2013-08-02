@@ -8,6 +8,7 @@ exports.index = function(req,res){
             })
 }
 
+//Handle post request to /orgs
 exports.orgs = function(req,res){
     console.log("Getting Fasta Files")
     reqData=""
@@ -40,7 +41,7 @@ exports.orgs = function(req,res){
                 console.log(orgList[i])
                 if(nParsed == orgList.length){
                     console.log("Sending")
-                    res.send(parsedOutput)
+                    res.render("orgs",{proteins:parsedOutput})
                 }
                 })
             })(i)
