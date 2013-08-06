@@ -10,7 +10,7 @@ var app = express();
 app.engine('.html',cons.swig)
 app.set('view engine', 'html');
 app.use(express.favicon());
-
+app.use(express.static('public'));
 // NOTE: Swig requires some extra setup
 // // This helps it know where to look for includes and parent templates
  swig.init({
@@ -24,7 +24,7 @@ app.use(express.favicon());
 
 app.get('/',routes.index);
 
-app.post('/orgs',routes.orgs);
+app.post('/orgs',routes.getSession);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

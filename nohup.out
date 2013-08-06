@@ -1,0 +1,262 @@
+Express server listening on port 8080
+Getting Organism List
+Getting Fasta Files
+{ '0': 'Acetobacter pasteurianus IFO 3283 01 42C uid158377',
+  '1': 'Treponema pallidum Nichols uid208669',
+  '2': 'Treponema pallidum Mexico A uid176920',
+  '3': 'Treponema pallidum Fribourg Blanc uid201428',
+  '4': 'Treponema pallidum DAL 1 uid87065' }
+[ 'Acetobacter pasteurianus IFO 3283 01 42C uid158377',
+  'Treponema pallidum Nichols uid208669',
+  'Treponema pallidum Mexico A uid176920',
+  'Treponema pallidum Fribourg Blanc uid201428',
+  'Treponema pallidum DAL 1 uid87065' ]
+executingAcetobacter pasteurianus IFO 3283 01 42C uid158377
+executingTreponema pallidum Nichols uid208669
+executingTreponema pallidum Mexico A uid176920
+executingTreponema pallidum Fribourg Blanc uid201428
+executingTreponema pallidum DAL 1 uid87065
+Treponema pallidum Nichols uid208669
+Treponema pallidum Fribourg Blanc uid201428
+Treponema pallidum Mexico A uid176920
+Treponema pallidum DAL 1 uid87065
+Acetobacter pasteurianus IFO 3283 01 42C uid158377
+Sending
+Getting Organism List
+Getting Fasta Files
+{ '0': 'Dengue virus 4 uid15599',
+  '1': 'Dengue virus 3 uid15598',
+  '2': 'Dengue virus 2 uid20183',
+  '3': 'Dengue virus 1 uid15306',
+  '4': 'West Nile virus uid30293',
+  '5': 'West Nile virus uid15431',
+  '6': 'Treponema pallidum pertenue SamoaD uid87069',
+  '7': 'Treponema pallidum pertenue Gauthier uid87067',
+  '8': 'Treponema pallidum pertenue CDC2 uid87051',
+  '9': 'Treponema pallidum SS14 uid58977',
+  '10': 'Treponema pallidum Nichols uid57585',
+  '11': 'Treponema pallidum Nichols uid208669',
+  '12': 'Borrelia burgdorferi ZS7 uid59429',
+  '13': 'Borrelia burgdorferi N40 uid161241',
+  '14': 'Borrelia burgdorferi JD1 uid161197',
+  '15': 'Borrelia burgdorferi B31 uid57581' }
+[ 'Dengue virus 4 uid15599',
+  'Dengue virus 3 uid15598',
+  'Dengue virus 2 uid20183',
+  'Dengue virus 1 uid15306',
+  'West Nile virus uid30293',
+  'West Nile virus uid15431',
+  'Treponema pallidum pertenue SamoaD uid87069',
+  'Treponema pallidum pertenue Gauthier uid87067',
+  'Treponema pallidum pertenue CDC2 uid87051',
+  'Treponema pallidum SS14 uid58977',
+  'Treponema pallidum Nichols uid57585',
+  'Treponema pallidum Nichols uid208669',
+  'Borrelia burgdorferi ZS7 uid59429',
+  'Borrelia burgdorferi N40 uid161241',
+  'Borrelia burgdorferi JD1 uid161197',
+  'Borrelia burgdorferi B31 uid57581' ]
+executingDengue virus 4 uid15599
+executingDengue virus 3 uid15598
+executingDengue virus 2 uid20183
+executingDengue virus 1 uid15306
+executingWest Nile virus uid30293
+executingWest Nile virus uid15431
+executingTreponema pallidum pertenue SamoaD uid87069
+executingTreponema pallidum pertenue Gauthier uid87067
+executingTreponema pallidum pertenue CDC2 uid87051
+executingTreponema pallidum SS14 uid58977
+executingTreponema pallidum Nichols uid57585
+executingTreponema pallidum Nichols uid208669
+executingBorrelia burgdorferi ZS7 uid59429
+executingBorrelia burgdorferi N40 uid161241
+executingBorrelia burgdorferi JD1 uid161197
+executingBorrelia burgdorferi B31 uid57581
+West Nile virus uid15431
+West Nile virus uid30293
+Dengue virus 1 uid15306
+Dengue virus 2 uid20183
+Dengue virus 3 uid15598
+Dengue virus 4 uid15599
+Borrelia burgdorferi ZS7 uid59429
+Treponema pallidum pertenue Gauthier uid87067
+Treponema pallidum Nichols uid208669
+Treponema pallidum pertenue CDC2 uid87051
+Treponema pallidum pertenue SamoaD uid87069
+Borrelia burgdorferi B31 uid57581
+Treponema pallidum Nichols uid57585
+Borrelia burgdorferi N40 uid161241
+Borrelia burgdorferi JD1 uid161197
+Treponema pallidum SS14 uid58977
+Sending
+Getting Organism List
+Getting Organism List
+Getting Organism List
+Getting Organism List
+Getting Organism List
+Getting Fasta Files
+{ '0': 'Acaryochloris marina MBIC11017 uid58167',
+  '1': 'Acetobacter pasteurianus IFO 3283 07 uid158381',
+  '2': 'Acetobacter pasteurianus IFO 3283 32 uid158375' }
+[ 'Acaryochloris marina MBIC11017 uid58167',
+  'Acetobacter pasteurianus IFO 3283 07 uid158381',
+  'Acetobacter pasteurianus IFO 3283 32 uid158375' ]
+executingAcaryochloris marina MBIC11017 uid58167
+executingAcetobacter pasteurianus IFO 3283 07 uid158381
+executingAcetobacter pasteurianus IFO 3283 32 uid158375
+Acetobacter pasteurianus IFO 3283 07 uid158381
+Acetobacter pasteurianus IFO 3283 32 uid158375
+Acaryochloris marina MBIC11017 uid58167
+Sending
+Getting Organism List
+Getting Fasta Files
+{ '0': 'Acetobacter pasteurianus IFO 3283 22 uid158383',
+  '1': 'Acetobacter pasteurianus IFO 3283 32 uid158375' }
+[ 'Acetobacter pasteurianus IFO 3283 22 uid158383',
+  'Acetobacter pasteurianus IFO 3283 32 uid158375' ]
+executingAcetobacter pasteurianus IFO 3283 22 uid158383
+executingAcetobacter pasteurianus IFO 3283 32 uid158375
+Acetobacter pasteurianus IFO 3283 32 uid158375
+Acetobacter pasteurianus IFO 3283 22 uid158383
+Sending
+Getting Fasta Files
+{ '0': 'Acetobacter pasteurianus IFO 3283 22 uid158383',
+  '1': 'Acetobacter pasteurianus IFO 3283 32 uid158375',
+  '2': 'Escherichia blattae DSM 4481 uid165043',
+  '3': 'Escherichia coli ABU 83972 uid161975',
+  '4': 'Escherichia coli 55989 uid59383' }
+[ 'Acetobacter pasteurianus IFO 3283 22 uid158383',
+  'Acetobacter pasteurianus IFO 3283 32 uid158375',
+  'Escherichia blattae DSM 4481 uid165043',
+  'Escherichia coli ABU 83972 uid161975',
+  'Escherichia coli 55989 uid59383' ]
+executingAcetobacter pasteurianus IFO 3283 22 uid158383
+executingAcetobacter pasteurianus IFO 3283 32 uid158375
+executingEscherichia blattae DSM 4481 uid165043
+executingEscherichia coli ABU 83972 uid161975
+executingEscherichia coli 55989 uid59383
+Acetobacter pasteurianus IFO 3283 32 uid158375
+Acetobacter pasteurianus IFO 3283 22 uid158383
+Escherichia coli ABU 83972 uid161975
+Escherichia blattae DSM 4481 uid165043
+Escherichia coli 55989 uid59383
+Sending
+Getting Organism List
+Getting Fasta Files
+{ '0': 'Treponema pallidum Chicago uid159543',
+  '1': 'Treponema pallidum Nichols uid57585',
+  '2': 'Treponema pallidum Nichols uid208669',
+  '3': 'Treponema pallidum Mexico A uid176920',
+  '4': 'Treponema pallidum Fribourg Blanc uid201428',
+  '5': 'Treponema pallidum pertenue Gauthier uid87067',
+  '6': 'Treponema pallidum pertenue CDC2 uid87051',
+  '7': 'Treponema pallidum SS14 uid58977',
+  '8': 'Treponema pallidum pertenue SamoaD uid87069',
+  '9': 'Treponema pallidum DAL 1 uid87065' }
+[ 'Treponema pallidum Chicago uid159543',
+  'Treponema pallidum Nichols uid57585',
+  'Treponema pallidum Nichols uid208669',
+  'Treponema pallidum Mexico A uid176920',
+  'Treponema pallidum Fribourg Blanc uid201428',
+  'Treponema pallidum pertenue Gauthier uid87067',
+  'Treponema pallidum pertenue CDC2 uid87051',
+  'Treponema pallidum SS14 uid58977',
+  'Treponema pallidum pertenue SamoaD uid87069',
+  'Treponema pallidum DAL 1 uid87065' ]
+executingTreponema pallidum Chicago uid159543
+executingTreponema pallidum Nichols uid57585
+executingTreponema pallidum Nichols uid208669
+executingTreponema pallidum Mexico A uid176920
+executingTreponema pallidum Fribourg Blanc uid201428
+executingTreponema pallidum pertenue Gauthier uid87067
+executingTreponema pallidum pertenue CDC2 uid87051
+executingTreponema pallidum SS14 uid58977
+executingTreponema pallidum pertenue SamoaD uid87069
+executingTreponema pallidum DAL 1 uid87065
+Treponema pallidum Chicago uid159543
+Treponema pallidum Nichols uid57585
+Treponema pallidum Fribourg Blanc uid201428
+Treponema pallidum Nichols uid208669
+Treponema pallidum DAL 1 uid87065
+Treponema pallidum pertenue CDC2 uid87051
+Treponema pallidum pertenue Gauthier uid87067
+Treponema pallidum pertenue SamoaD uid87069
+Treponema pallidum Mexico A uid176920
+Treponema pallidum SS14 uid58977
+Sending
+Getting Fasta Files
+{ '0': 'Treponema pallidum Chicago uid159543',
+  '1': 'Treponema pallidum Nichols uid57585',
+  '2': 'Treponema pallidum Nichols uid208669',
+  '3': 'Treponema pallidum Mexico A uid176920',
+  '4': 'Treponema pallidum Fribourg Blanc uid201428',
+  '5': 'Treponema pallidum pertenue Gauthier uid87067',
+  '6': 'Treponema pallidum pertenue CDC2 uid87051',
+  '7': 'Treponema pallidum SS14 uid58977',
+  '8': 'Treponema pallidum pertenue SamoaD uid87069',
+  '9': 'Treponema pallidum DAL 1 uid87065',
+  '10': 'West Nile virus uid15431',
+  '11': 'West Nile virus uid30293' }
+[ 'Treponema pallidum Chicago uid159543',
+  'Treponema pallidum Nichols uid57585',
+  'Treponema pallidum Nichols uid208669',
+  'Treponema pallidum Mexico A uid176920',
+  'Treponema pallidum Fribourg Blanc uid201428',
+  'Treponema pallidum pertenue Gauthier uid87067',
+  'Treponema pallidum pertenue CDC2 uid87051',
+  'Treponema pallidum SS14 uid58977',
+  'Treponema pallidum pertenue SamoaD uid87069',
+  'Treponema pallidum DAL 1 uid87065',
+  'West Nile virus uid15431',
+  'West Nile virus uid30293' ]
+executingTreponema pallidum Chicago uid159543
+executingTreponema pallidum Nichols uid57585
+executingTreponema pallidum Nichols uid208669
+executingTreponema pallidum Mexico A uid176920
+executingTreponema pallidum Fribourg Blanc uid201428
+executingTreponema pallidum pertenue Gauthier uid87067
+executingTreponema pallidum pertenue CDC2 uid87051
+executingTreponema pallidum SS14 uid58977
+executingTreponema pallidum pertenue SamoaD uid87069
+executingTreponema pallidum DAL 1 uid87065
+executingWest Nile virus uid15431
+executingWest Nile virus uid30293
+Treponema pallidum pertenue Gauthier uid87067
+Treponema pallidum Nichols uid57585
+Treponema pallidum Chicago uid159543
+Treponema pallidum DAL 1 uid87065
+Treponema pallidum Fribourg Blanc uid201428
+West Nile virus uid15431
+West Nile virus uid30293
+Treponema pallidum pertenue CDC2 uid87051
+Treponema pallidum SS14 uid58977
+Treponema pallidum pertenue SamoaD uid87069
+Treponema pallidum Mexico A uid176920
+Treponema pallidum Nichols uid208669
+Sending
+Getting Organism List
+Getting Fasta Files
+{ '0': 'Acetobacter pasteurianus IFO 3283 01 42C uid158377',
+  '1': 'Acetobacter pasteurianus IFO 3283 01 uid59279',
+  '2': 'Acetobacter pasteurianus IFO 3283 12 uid158379',
+  '3': 'Acidaminococcus intestini RyC MR95 uid74445' }
+[ 'Acetobacter pasteurianus IFO 3283 01 42C uid158377',
+  'Acetobacter pasteurianus IFO 3283 01 uid59279',
+  'Acetobacter pasteurianus IFO 3283 12 uid158379',
+  'Acidaminococcus intestini RyC MR95 uid74445' ]
+executingAcetobacter pasteurianus IFO 3283 01 42C uid158377
+executingAcetobacter pasteurianus IFO 3283 01 uid59279
+executingAcetobacter pasteurianus IFO 3283 12 uid158379
+executingAcidaminococcus intestini RyC MR95 uid74445
+Acidaminococcus intestini RyC MR95 uid74445
+Acetobacter pasteurianus IFO 3283 01 uid59279
+Acetobacter pasteurianus IFO 3283 01 42C uid158377
+Acetobacter pasteurianus IFO 3283 12 uid158379
+Sending
+Getting Organism List
+Getting Fasta Files
+{}
+[]
+Getting Fasta Files
+{}
+[]
