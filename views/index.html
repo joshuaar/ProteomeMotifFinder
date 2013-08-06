@@ -8,6 +8,8 @@
         
         <input type="text" ng-model="regEx" 
         placeholder="Enter a pattern (Perl Regular Expression)">
+        {{"{{nToShow}"}}}
+        {{"{{hello}"}}}
         <div ng-controller="orgDisplay">
             <a href ng-click="clear()">Clear</a>
             <a href ng-click="postOrgs()">Submit</a>
@@ -17,26 +19,36 @@
             </a>
             </li> 
             <hr>
-            <li ng-repeat="org in orgs|filter:regexFilter">
+            <li ng-repeat="org in orgs|filter:regexFilter|limitTo:nToShow">
             <a href ng-click="addOrg(org)">{{ "{{org}" }}}</a>
             </li>
+        <a href ng-click="showMore()">Show More</a>
         </div>
-        {{ "{{regEx}" }}}
+        <!--End of organism list.-->
         <script>
             function orgDisplay($scope){
-                $scope.orgz = ["a","b","c"];
+                //Organism list
                 $scope.orgs = [
                 {% for i in Organisms %}
                 "{{i}}",
                 {% endfor %}
                 ];
+                //Place to put added organisms
                 $scope.added = []
+                //The filtering function (regex matching)
                 $scope.regexFilter = function(input){
                     var patt=new RegExp($scope.regEx,"i");
                     if($scope.added.indexOf(input)==-1){
                         return patt.test(input);
                     }
-                    };
+                };
+                //How many organisms to show
+                $scope.nToShow = 100;
+                $scope.hello = "hillo"
+                $scope.showMore = function(){
+                    $scope.nToShow = $scope.nToShow+100
+                };
+                //Function for adding organisms to variable added
                 $scope.addOrg=function(orgName){
                     $scope.added.push(orgName);
                 };

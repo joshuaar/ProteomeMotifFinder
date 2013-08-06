@@ -24,7 +24,9 @@ app.use(express.favicon());
 
 app.get('/',routes.index);
 
-app.post('/orgs',routes.getSession);
+app.post('/orgs',routes.orgsShell);
+
+app.get('/orgs/:sessID',routes.orgsData);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -10,9 +10,17 @@
         //This script is for displaying the filtered protein data
             myApp.controller('proteinDisplay',function($scope,$http,$timeout){
                 {% autoescape false %}
-                $scope.proteins={{proteins|json_encode}}
+                $scope.session={{session|json_encode}}
                 {% endautoescape %}
-                $scope.someText = ["abc","cde","efg"]
+                $scope.proteins = []
+                $scope.showLoading = true;
+                $scope.init = function(){
+                    $scope.proteins = [$scope.session.sessID,"a","b"]
+                    $http({method:"GET",url:"/orgs/"+$scope.session.sessID}).success(function(data,stat,head,conf){
+                        $scope.proteins = data;
+                        $scope.showLoading=false;
+                        })
+                };
                 $scope.regExFilter=function(protein){
                     var patt=new RegExp($scope.filterText,"i");
                     return patt.test(protein.seq);
@@ -35,7 +43,7 @@
                     filterTextTimeout = $timeout(function(){
                         $scope.filterText = tempFilterText;
                         //window.alert("HEU")
-                        },400)
+                        },100)
                     })
                 //end delay code
             });
@@ -50,12 +58,14 @@
     </head>
     <body>
         <h1> Proteome Motif Finder </h1>
-        <div ng-controller="proteinDisplay"> 
+        <div ng-controller="proteinDisplay" ng-init="init()"> 
         <input type="text" ng-model="regEx" 
         placeholder="Enter a pattern (Perl Regular Expression)">
         <li ng-repeat="i in proteins|filter:regExFilter|limitTo:nToShow">
         [[i.header]]<br>
         </li>
+        <br>
+        <img ng-show="showLoading" src="/ajax-loader.gif">
         <a href ng-click="showMore()">Show More</a>
     </div>
 
