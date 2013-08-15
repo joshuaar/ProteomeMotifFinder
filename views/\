@@ -16,10 +16,10 @@
                     return {
                         restrict: 'A',
                         link: function($scope, element, attrs) {
-                            element.html($scope.formatSeq($scope.i.seq));
-                            $scope.$watch( "filterText", function(val) {
-                                element.html($scope.formatSeq($scope.i.seq));
-                            }, true );
+                            element.html("FAAA");
+                          //  $scope.$watch( "regEx", function(val) {
+                           //     element.html($scope.formatSeq($scope.i.seq));
+                           // }, true );
                         }
                     };
                 }
@@ -67,15 +67,13 @@
                 var tempFilterText = '',
                     filterTextTimeout;
                 $scope.$watch('regEx',function(val){
-                    console.log("regEx Changed")
                     if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
                     //window.alert("HIO")
                     tempFilterText = val;
                     filterTextTimeout = $timeout(function(){
                         $scope.filterText = tempFilterText;
-                        console.log("Filter Text Updated");
                         //window.alert("HEU")
-                        },400)
+                        },100)
                     })
                 //end delay code
             });
@@ -105,7 +103,7 @@
         <input type="text" ng-model="regEx" 
         placeholder="Enter a pattern (Perl Regular Expression)">
         <li ng-repeat="i in proteins|filter:regExFilter|limitTo:nToShow">
-        [[i.header]]<br><div protein-formatter="[[i.seq]]">[[i.seq]]</div>
+        [[i.header]]<br><div proteinFormatter="[[i.seq]]">[[i.seq]]</div>
         </li>
         <br>
         <img ng-show="showLoading" src="/ajax-loader.gif">

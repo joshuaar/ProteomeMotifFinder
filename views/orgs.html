@@ -12,7 +12,6 @@
                 {% autoescape false %}
                 $scope.proteins={{proteins|json_encode}}
                 {% endautoescape %}
-                $scope.someText = ["abc","cde","efg"]
                 $scope.regExFilter=function(protein){
                     var patt=new RegExp($scope.filterText,"i");
                     return patt.test(protein.seq);
@@ -54,7 +53,7 @@
         <input type="text" ng-model="regEx" 
         placeholder="Enter a pattern (Perl Regular Expression)">
         <li ng-repeat="i in proteins|filter:regExFilter|limitTo:nToShow">
-        [[i.header]]<br>
+        [[i.header]]FUUUU
         </li>
         <a href ng-click="showMore()">Show More</a>
     </div>
