@@ -49,11 +49,22 @@
                     var start = match.index;
                     var text=match[0];
                     var end = start+text.length;
-                    start = seq.slice(0,start);
-                    end = seq.slice(end,seq.length);
-                    var nChars = 50;
-                    return seqLineSplit(start,nChars)+"<strong>"+text+"</strong>"+
-                        seqLineSplit(end,nChars);
+                    var nChars = 80;
+                    var out = '<p style="font-family:monospace;">'
+                    for(var i=0;i<seq.length;i++){
+                        if(i%nChars==0){
+                            out+="<br>"
+                        };
+                        if(i==start){
+                            out+="<strong>";
+                        };
+                        if(i==end){
+                            out+="</strong>";
+                        };
+                        out+=seq[i]
+                    };
+                    return out+"</p>";
+
                 };
                 //Number of elements to show, and function for inceasing this value
                 $scope.nToShow = 100;
@@ -81,12 +92,9 @@
             });
 
         function seqLineSplit(seq,nChars){
-            out = "";                           
+            out = [];                           
             for(var i=0; i<seq.length;i+=nChars){
-                if(i+nChars <= seq.length)
-                    out += seq.slice(i,i+nChars) + "<br>"
-                else
-                    out+= seq.slice(i,i+nChars)
+                    out.push( seq.slice(i,i+nChars) )
             };
             return out;
         };
