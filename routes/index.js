@@ -48,6 +48,50 @@ exports.orgsData = function(req,res){
     sendProteins(orgList,res);
 };
 
+//interface for protomapper
+exports.protomapper=function(req,res){
+	res.render("protomapper")	
+}
+
+//API for searching patterns. Returns json or fasta formatted results
+//format: .../protomap?level=orgs|prots&seqs=seq1%seq2%seq3
+exports.protomap=function(req,res){
+	output="";
+        (function(seqs,level,format){
+            console.log("Query:"+seqs)
+	//Get results from engine
+        fastas = spawn('python',["/root/RegExDBSearch/Protmap.py","/root/ixCompress/",seqs, level])
+	console.log("protomatch instance spawned")
+        fastas.stdout.on("data",function(data){
+	    console.log(data)
+            output += data
+            })
+        fastas.on("close",function(code){
+	    console.log(output)
+	    output = output.split("__JSONSTART__")
+ 	    if(output.length > 1){
+		console.log("output"+output[1])
+		console.log("len"+output[1].length)
+            	output=JSON.parse(output[1])
+	    } else {
+		output=JSON.parse([])
+	    }
+            console.log("Sending")
+	    if(format=="fasta"){
+		for(i in output){
+			res.write(">gi|"+output[i].gi+"|"+output[i].desc+"\n")
+			res.write(output[i].seq+"\n")
+		}
+		res.end()
+	    }
+            else{
+		res.send(JSON.stringify(output))
+	    }
+            })
+        })(req.query.seqs,req.query.level,req.query.format)
+    
+
+};
 //Go fetch the proteins from fasta files
 //NCBI doesnt have a good API for this kind of thing, so we do this.
 var sendProteins=function(orgList,res){

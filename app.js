@@ -22,6 +22,8 @@ app.use(express.static('public'));
 app.set('port', process.env.PORT || 8080);
 app.use(express.favicon());
 
+app.get('/protomap',routes.protomap);
+app.get('/protomapper',routes.protomapper);
 app.get('/',routes.index);
 
 app.post('/orgs',routes.orgsShell);
