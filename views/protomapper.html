@@ -3,123 +3,49 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
         <script type="text/javascript">
+		var myApp = angular.module('myApp', [], function ($interpolateProvider) {
+			$interpolateProvider.startSymbol('[[');
+			$interpolateProvider.endSymbol(']]');
+		});
 
-            //app
-            var myApp = angular.module('myApp', [], function ($interpolateProvider) {
-                    $interpolateProvider.startSymbol('[[');
-                     $interpolateProvider.endSymbol(']]');
-                     });
-
-        //This is the directive for splitting protein data correctly
-            myApp.directive('proteinFormatter',
-                function() {
-                    return {
-                        restrict: 'A',
-                        link: function($scope, element, attrs) {
-                            element.html($scope.formatSeq($scope.i.seq));
-                            $scope.$watch( "filterText", function(val) {
-                                element.html($scope.formatSeq($scope.i.seq));
-                            }, true );
-                        }
-                    };
-                }
-            );
-
-        //This script is for displaying the filtered protein data
-            myApp.controller('proteinDisplay',function($scope,$http,$timeout){
-                {% autoescape false %}
-                $scope.session={{session|json_encode}}
-                {% endautoescape %}
-                $scope.proteins = []
-                $scope.showLoading = true;
-                $scope.init = function(){
-                    $scope.proteins = [$scope.session.sessID,"a","b"]
-                    $http({method:"GET",url:"/orgs/"+$scope.session.sessID}).success(function(data,stat,head,conf){
-                        $scope.proteins = data;
-                        $scope.showLoading=false;
-                        })
-                };
-                $scope.regExFilter=function(protein){
-                    var patt=new RegExp($scope.filterText,"i");
-                    return patt.test(protein.seq);
-                };
-                $scope.formatSeq=function(seq){
-                    var patt = new RegExp($scope.filterText,"i");
-                    var match = patt.exec(seq);
-                    var start = match.index;
-                    var text=match[0];
-                    var end = start+text.length;
-                    var nChars = 80;
-                    var out = '<p style="font-family:monospace;">'
-                    for(var i=0;i<seq.length;i++){
-                        if(i%nChars==0){
-                            out+="<br>"
-                        };
-                        if(i==start){
-                            out+="<strong>";
-                        };
-                        if(i==end){
-                            out+="</strong>";
-                        };
-                        out+=seq[i]
-                    };
-                    return out+"</p>";
-
-                };
-                //Number of elements to show, and function for inceasing this value
-                $scope.nToShow = 100;
-                $scope.showMore = function(){
-                    $scope.nToShow = $scope.nToShow + 100;
-                };
-                //The following is code to introduce a delay in regex matching
-                //User types in pattern, it waits 400ms, then matches against
-                //bound data
-                $scope.filterText = '';
-                var tempFilterText = '',
-                    filterTextTimeout;
-                $scope.$watch('regEx',function(val){
-                    console.log("regEx Changed")
-                    if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
-                    //window.alert("HIO")
-                    tempFilterText = val;
-                    filterTextTimeout = $timeout(function(){
-                        $scope.filterText = tempFilterText;
-                        console.log("Filter Text Updated");
-                        //window.alert("HEU")
-                        },400)
-                    })
-                //end delay code
-            });
-
-        function seqLineSplit(seq,nChars){
-            out = [];                           
-            for(var i=0; i<seq.length;i+=nChars){
-                    out.push( seq.slice(i,i+nChars) )
-            };
-            return out;
-        };
-        </script>
-        <script>
-            angular.module('ng').filter('maxLines',function(){
-                return function(input){
-                    return input
-                }
-            })
+		myApp.controller('searchResultDisplay',function($scope,$http,$timeout){
+			$scope.searchBoxArray = [{"val":""}];
+			$scope.addPattern = function(){$scope.searchBoxArray.push({"val":""})};
+			$scope.clear = function(){$scope.searchBoxArray = [{"val":""}]};
+			$scope.submit = function(){
+				var url = ""
+				for(i in $scope.searchBoxArray)
+					url += "%"+$scope.searchBoxArray[i]["val"]
+				url = url.slice(1);//chop the first char off
+				url = "/protomap?level=orgs&seqs="+url+"&format=json"
+				console.log(url)
+				$http({method: 'GET', url: url}).
+					success(function(data,status,headers,config){
+						$scope.result = data;
+					}).
+					error(function(){});
+			};
+			$scope.result = [];
+		});
         </script>
     </head>
     <body>
-        <h1> Proteome Motif Finder </h1>
-        <div ng-controller="proteinDisplay" ng-init="init()"> 
-        <input type="text" ng-model="regEx" 
-        placeholder="Enter a pattern (Perl Regular Expression)">
-        <li ng-repeat="i in proteins|filter:regExFilter|limitTo:nToShow">
-        [[i.header]]<br><div protein-formatter="[[i.seq]]">[[i.seq]]</div>
-        </li>
-        <br>
-        <img ng-show="showLoading" src="/ajax-loader.gif">
-        <a href ng-click="showMore()">Show More</a>
-    </div>
-
+        <h1> Protomapper Search </h1>
+	<div ng-controller="searchResultDisplay" ng-init="init()"> 
+		<form ng-submit="submit()">
+		<div ng-repeat="i in searchBoxArray">
+			<input type="text" ng-model="i.val" 
+			placeholder="Enter a pattern (Perl Regular Expression)">
+			[[i.val]]
+		</div>
+		</form>
+        	<a href ng-click="addPattern()">add another pattern</a>
+        	<a href ng-click="clear()">clear</a>
+        	<a href ng-click="submit()">submit search</a>
+		<li ng-repeat="i in result">
+		[[i.desc]]<br>[[i.seq]]<br>
+		</li>
+	</div>
     </body>
 </html>
 

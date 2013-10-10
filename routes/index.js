@@ -67,7 +67,6 @@ exports.protomap=function(req,res){
             output += data
             })
         fastas.on("close",function(code){
-	    console.log(output)
 	    output = output.split("__JSONSTART__")
  	    if(output.length > 1){
 		console.log("output"+output[1])
