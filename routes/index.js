@@ -63,17 +63,14 @@ exports.protomap=function(req,res){
         fastas = spawn('python',["/root/RegExDBSearch/Protmap.py","/root/ixCompress/",seqs, level])
 	console.log("protomatch instance spawned")
         fastas.stdout.on("data",function(data){
-	    console.log(data)
             output += data
             })
         fastas.on("close",function(code){
 	    output = output.split("__JSONSTART__")
  	    if(output.length > 1){
-		console.log("output"+output[1])
-		console.log("len"+output[1].length)
             	output=JSON.parse(output[1])
 	    } else {
-		output=JSON.parse([])
+		output=""
 	    }
             console.log("Sending")
 	    if(format=="fasta"){
